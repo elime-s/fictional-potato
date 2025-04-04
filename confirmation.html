@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        .confirmation-container {
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        .runner-details {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #e9f7e9;
+            border-radius: 6px;
+        }
+        .btn {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="confirmation-container">
+        <h2>Registration Successful!</h2>
+        <div class="runner-details">
+            <p><strong>Runner Number:</strong> <span id="runnerNumber"></span></p>
+            <p><strong>Name:</strong> <span id="runnerName"></span></p>
+            <p><strong>Gender:</strong> <span id="runnerGender"></span></p>
+            <p><strong>Age:</strong> <span id="runnerAge"></span></p>
+            <p><strong>House:</strong> <span id="runnerHouse"></span></p>
+        </div>
+        <button class="btn" onclick="window.location.href = '/'">Back to Registration</button>
+    </div>
+
+    <script>
+        // Get query parameters from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('runnerNumber').innerText = urlParams.get('runner_number');
+        document.getElementById('runnerName').innerText = urlParams.get('name');
+        document.getElementById('runnerGender').innerText = urlParams.get('gender');
+        document.getElementById('runnerAge').innerText = urlParams.get('age');
+        document.getElementById('runnerHouse').innerText = urlParams.get('house');
+    </script>
+
+</body>
+</html>
