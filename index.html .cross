@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Runner Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Register for the Race</h2>
+        <form id="registrationForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="age">Age:</label>
+            <input type="text" id="age" name="age" required>
+
+            <label for="house">House:</label>
+            <select id="house" name="house" required>
+                <option value="Helps">Helps</option>
+                <option value="Anstey">Anstey</option>
+                <option value="Gordan">Gordan</option>
+                <option value="Rawle">Rawle</option>
+            </select>
+
+            <button type="submit">Register</button>
+            <p id="errorMessage" class="error"></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const gender = document.getElementById("gender").value;
+            const age = document.getElementById("age").value;
+            const house = document.getElementById("house").value;
+
+            if (isNaN(age) || age <= 0) {
+                document.getElementById("errorMessage").innerText = "Please enter a valid age!";
+                return;
+            }
+
+            // Just a simple runner number (incremented each time)
+            const runner_number = Math.floor(Math.random() * 1000);  // Random number for the example
+
+            // Redirect to confirmation page with query params (the runner number and data)
+            window.location.href = `/confirmation?runner_number=${runner_number}&name=${name}&gender=${gender}&age=${age}&house=${house}`;
+        });
+    </script>
+</body>
+</html>
